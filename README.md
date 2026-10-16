@@ -31,7 +31,7 @@
 
 1. **建数据库**：控制台 → Storage & databases → D1 → Create database，命名 `yisha-leads`（或命令行 `npx wrangler d1 create yisha-leads`）
 2. **建表**：打开该数据库的 Console 标签，粘贴执行仓库里 `schema.sql` 的内容（或 `npx wrangler d1 execute yisha-leads --remote --file schema.sql`）
-3. **绑定到 Pages 项目**：Pages 项目 → Settings → Functions → D1 database bindings → Add：Variable name 填 `DB`，数据库选 `yisha-leads`，保存后重新部署一次生效
+3. **绑定到 Pages 项目**：绑定已写在仓库的 `wrangler.toml`（`[[d1_databases]]`，变量名 `DB`，database_id 为 yisha-leads 的 ID），push 到 main 自动部署即生效。注意：本项目的绑定由 wrangler.toml 管理，控制台里是只读的；换数据库时改 wrangler.toml 里的 database_id 再 push。
 4. **配通知（可选，配哪个发哪个）**：Pages 项目 → Settings → Environment variables → Production，添加以下变量（建议类型选 Secret）：
    - 飞书：`FEISHU_WEBHOOK_URL` = 飞书群里添加「自定义机器人」后得到的 webhook 地址；机器人若开了签名校验，再加 `FEISHU_SECRET`
    - 邮件：`RESEND_API_KEY`（Resend 的 API Key）+ `NOTIFY_EMAIL`（接收留资的邮箱）；发件人默认 `onboarding@resend.dev`，绑自有域名后可用 `NOTIFY_FROM` 改为自有地址
