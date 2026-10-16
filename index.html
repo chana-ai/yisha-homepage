@@ -249,6 +249,11 @@ padding:8px 15px;font-size:13.5px;cursor:pointer;font-family:inherit;text-align:
 .agent-card{background:var(--pine-2);border:1px solid rgba(234,243,238,.14);border-radius:var(--radius);padding:22px 20px}
 .agent-card h4{margin:0 0 8px;font-size:17px;color:#FFF}
 .agent-card p{margin:0;font-size:14px;color:var(--pine-muted);line-height:1.65}
+.sub-head{max-width:760px;margin:56px 0 20px}
+.sub-head h3{font-size:25px;margin:0 0 8px;color:#FFF}
+.dark .sub-head p{color:var(--pine-muted);font-size:16px;margin:0;line-height:1.7}
+.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cases-note{margin-top:22px;font-size:13.5px;color:var(--ink-2)}
 
 /* deploy */
 .deploy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -351,7 +356,7 @@ html{scroll-behavior:auto}
 .scene-panel img{min-height:210px}
 }
 @media (max-width:520px){
-.agent-grid,.process,.trust-row{grid-template-columns:1fr}
+.agent-grid,.process,.trust-row,.pillar-grid{grid-template-columns:1fr}
 .hero-card{position:static;width:100%;margin-top:14px}
 .hero-visual{display:flex;flex-direction:column}
 }
@@ -372,6 +377,7 @@ html{scroll-behavior:auto}
 <a href="#solutions">产品方案</a>
 <a href="#video">一站式视频生成</a>
 <a href="#intel">企业智能</a>
+<a href="#cases">场景案例</a>
 <a href="#deploy">部署与安全</a>
 <a href="#faq">常见问题</a>
 </nav>
@@ -384,6 +390,7 @@ html{scroll-behavior:auto}
 <a href="#solutions">产品方案</a>
 <a href="#video">一站式视频生成</a>
 <a href="#intel">企业智能</a>
+<a href="#cases">场景案例</a>
 <a href="#deploy">部署与安全</a>
 <a href="#faq">常见问题</a>
 <a href="#contact" style="color:var(--brand-ink);font-weight:700">预约演示 →</a>
@@ -521,8 +528,8 @@ html{scroll-behavior:auto}
 <div class="wrap">
 <div class="sec-head reveal">
 <div class="kicker">一刹 · 智枢</div>
-<h2>企业智能：先把数据组织成图谱，再让 Agent 干活</h2>
-<p>制造业不缺数据，缺的是组织。订单在 ERP 里、工艺在 MES 里、经验在老师傅脑子里、图纸在共享盘里——信息彼此断裂，再强的 AI 也无从下手。一刹智枢先建图谱、再上 Agent，让每一次提问都能沿着真实关系找到答案。</p>
+<h2>企业智能：以知识图谱为核心，让 Agent 真正懂业务</h2>
+<p>一刹智枢的核心业务是两件事：把企业的知识图谱搭起来，把智能体 Agent 建起来。制造业不缺数据，缺的是组织——订单在 ERP 里、工艺在 MES 里、经验在老师傅脑子里、图纸在共享盘里，信息彼此断裂，再强的 AI 也无从下手。我们先把这些数据组织成一张机器读得懂的知识图谱，再让 Agent 连接到图谱上工作：它知道一台设备连着哪些工艺、一个订单卡在哪个环节、一类故障以前是怎么解决的——不是背话术，而是真的懂这家企业的业务。</p>
 </div>
 
 <div class="intel-grid">
@@ -601,6 +608,60 @@ html{scroll-behavior:auto}
 <div class="agent-card reveal"><h4>质量追溯</h4><p>从一张质检报告出发，沿图谱回溯批次、原料、工艺参数与经手班组，定位问题环节。</p></div>
 <div class="agent-card reveal"><h4>经营分析助手</h4><p>订单、产能、库存跨系统汇总成一句话结论，管理层问数不再等报表。</p></div>
 </div>
+
+<div class="sub-head reveal">
+<h3>两大核心业务：图谱搭建 + 智能体 Agent</h3>
+<p>图谱是把企业业务「翻译」给机器的语义层，Agent 是在这层语义之上干活的智能体——前者决定 Agent 聪不聪明，后者决定图谱值不值钱。</p>
+</div>
+<div class="pillar-grid">
+<div class="agent-card reveal"><h4>核心业务一 · 企业知识图谱搭建</h4><p>从本体建模开始：先定义企业自己的实体与关系——产品、零部件、工艺、设备、工单、客户、人员——再把 ERP、MES、CRM、PLM 和文档里的数据持续接入、清洗、对齐，抽取成图谱。图谱不是一次性交付的项目，而是随业务持续生长：新订单、新设备、新工艺自动入图，口径与规则的变更留痕、可回溯。</p></div>
+<div class="agent-card reveal"><h4>核心业务二 · 智能体 Agent</h4><p>Agent 不直接翻数据库，而是连接知识图谱开展工作：接到问题先在图谱里定位实体、沿关系链推理，再调用企业系统工具执行——查库存、派工单、生成报表、起草回复。跨会话记忆让它记得上次聊到哪，权限分级与审计让它的每一步都可控、可查。</p></div>
+</div>
+
+<div class="sub-head reveal">
+<h3>Agent 怎么「懂」一家企业的业务</h3>
+<p>靠的不是把说明书一股脑塞给大模型，而是让 Agent 站在图谱之上：业务的实体、关系、规则与流程，图谱里都有。</p>
+</div>
+<div class="agent-grid" style="margin-top:0">
+<div class="agent-card reveal"><h4>01 · 连接图谱</h4><p>每个问题先落到图谱的实体上：哪台设备、哪个订单、哪批物料——先定位，再行动。</p></div>
+<div class="agent-card reveal"><h4>02 · 理解语义</h4><p>图谱里的关系就是业务本身：BOM 的层级、工艺的先后、故障的因果。Agent 读的是业务结构，不是关键词。</p></div>
+<div class="agent-card reveal"><h4>03 · 推理规划</h4><p>沿关系链多跳推理，把复杂问题拆成可执行的步骤：先查什么、再比什么、最后给什么结论。</p></div>
+<div class="agent-card reveal"><h4>04 · 执行反馈</h4><p>调用系统工具真正办事，结果回写图谱；答案错了也能溯源到哪条关系、哪份文档，持续修正。</p></div>
+</div>
+</div>
+</section>
+
+<!-- CASES -->
+<section class="section section-soft" id="cases">
+<div class="wrap">
+<div class="sec-head reveal">
+<div class="kicker">场景案例</div>
+<h2>汽车制造场景：图谱与 Agent 落地的地方</h2>
+<p>汽车行业是制造业里数据最密集、链条最长的场景之一。下面两个场景按整车厂与零部件供应商的典型需求整理，来自我们正在推进的合作方向——先看场景怎么落地，正式客户案例将在签约后发布。</p>
+</div>
+<div class="prod-grid">
+<div class="prod-card reveal">
+<span class="prod-tag pine">场景 · 整车制造</span>
+<h3>整车厂：全厂一张图，问答直达现场</h3>
+<p>一家整车厂有数千台设备、上万个零部件和多条产线，数据散在 MES、ERP 和无数份维修记录里。场景中，智枢把设备、工艺、工单与质检组织成全厂知识图谱，现场人员向 Agent 提问就能沿着图谱拿到带出处的答案；成片则承接新车上市与渠道培训的视频生产。</p>
+<ul class="prod-list">
+<li>智枢：设备、工艺、工单入图，维修 Agent 按图谱给出排查路径</li>
+<li>智枢：质量问题沿批次、原料与工艺参数回溯，更快定位问题环节</li>
+<li>成片：上市营销视频与经销商培训内容批量生成，多市场版本同步交付</li>
+</ul>
+</div>
+<div class="prod-card reveal">
+<span class="prod-tag pine">场景 · 汽车零部件</span>
+<h3>零部件供应商：多工厂，一个大脑</h3>
+<p>零部件供应商往往多工厂、多客户、多标准：同一个零件在不同工厂叫法不同，客户审核时资料满天飞。场景中，图谱先统一 BOM 与工艺口径，Agent 再在其上做跨厂问答与资料归集；面对海外客户，产品视频用成片多语言批量生成。</p>
+<ul class="prod-list">
+<li>智枢：多工厂 BOM 与工艺标准统一入图，跨厂问答一个口径</li>
+<li>智枢：客户审核与质量索赔资料，Agent 按图谱自动归集证据链</li>
+<li>成片：产品视频多语言批量生成，支撑海外客户开拓</li>
+</ul>
+</div>
+</div>
+<p class="cases-note reveal">说明：以上为场景示意，基于行业典型需求整理，不构成客户合作声明；正式案例将于签约后更新。</p>
 </div>
 </section>
 
