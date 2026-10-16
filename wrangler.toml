@@ -1,0 +1,14 @@
+name = "yisha-homepage"
+pages_build_output_dir = "."
+compatibility_date = "2026-10-16"
+
+# D1 留资数据库绑定。
+# 推荐方式：在 Cloudflare 控制台给 Pages 项目绑定（Settings → Functions → D1 database bindings，
+# 变量名填 DB，选择 yisha-leads 数据库），无需改本文件，步骤见 README。
+# 若改用本文件管理绑定，取消下面三行注释并把 database_id 换成真实值
+# （创建命令：npx wrangler d1 create yisha-leads）。
+#
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "yisha-leads"
+# database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

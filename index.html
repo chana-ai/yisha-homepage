@@ -724,8 +724,9 @@ html{scroll-behavior:auto}
 <label class="f">需求描述
 <textarea id="fMsg" placeholder="例如：我们有 200 多个 SKU，想批量生成产品短视频；厂里有 ERP 和 MES，想先做设备知识问答……"></textarea>
 </label>
+<input type="text" id="fWebsite" name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
 <div class="form-actions">
-<button type="submit" class="btn btn-brand">生成咨询摘要</button>
+<button type="submit" class="btn btn-brand">提交咨询</button>
 <button type="button" class="btn btn-ghost" id="copyBtn" style="display:none">复制摘要</button>
 <span class="copy-ok" id="copyOk"></span>
 </div>
@@ -937,7 +938,7 @@ if(!open){ item.classList.add('open');}
 });
 });
 
-/* consult form -> summary + copy */
+/* consult form -> POST /api/lead（存 D1 + 通知）；接口不可用时兜底为可复制摘要 */
 var form = document.getElementById('consultForm');
 var summaryBox = document.getElementById('summaryBox');
 var copyBtn = document.getElementById('copyBtn');
@@ -951,18 +952,41 @@ var product = document.getElementById('fProduct').value;
 var contact = document.getElementById('fContact').value.trim();
 var msg = document.getElementById('fMsg').value.trim();
 if(!company ||!product){ return;}
-var lines = [''];
+var lines = ['【一刹信息官网 · 咨询】'];
 lines.push('公司 / 团队：' + company);
 if(name){ lines.push('联系人：' + name);}
 lines.push('感兴趣的产品：' + product);
 if(contact){ lines.push('联系方式：' + contact);}
 if(msg){ lines.push('需求描述：' + msg);}
 summaryText = lines.join('\n');
-summaryBox.textContent = summaryText;
+var submitBtn = form.querySelector('button[type="submit"]');
+var oldLabel = submitBtn.textContent;
+function showSummary(note){
+summaryBox.textContent = note ? note + '\n\n' + summaryText : summaryText;
 summaryBox.classList.add('show');
 copyBtn.style.display = 'inline-flex';
-copyOk.textContent = '';
 summaryBox.scrollIntoView({ behavior:'smooth', block:'nearest'});
+}
+submitBtn.disabled = true;
+submitBtn.textContent = '提交中…';
+copyOk.textContent = '';
+fetch('/api/lead', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ company: company, name: name, product: product, contact: contact, message: msg, website: document.getElementById('fWebsite').value })
+}).then(function(res){
+if(!res.ok){ throw new Error('bad status'); }
+return res.json();
+}).then(function(){
+submitBtn.textContent = '已提交';
+copyOk.textContent = '提交成功，我们会尽快联系你';
+showSummary('已收到你的咨询，以下是你提交的内容：');
+}).catch(function(){
+submitBtn.disabled = false;
+submitBtn.textContent = oldLabel;
+copyOk.textContent = '在线提交未成功，可复制下方摘要发给我们';
+showSummary('');
+});
 });
 copyBtn.addEventListener('click', function(){
 function done(){ copyOk.textContent = '已复制，可粘贴发送给我们';}
