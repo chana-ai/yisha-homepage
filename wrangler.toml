@@ -2,6 +2,10 @@ name = "yisha-homepage"
 pages_build_output_dir = "."
 compatibility_date = "2026-10-16"
 
+# 非敏感配置（敏感密钥不要写这里，用控制台的 Secret 环境变量，如 RESEND_API_KEY）
+[vars]
+NOTIFY_EMAIL = "shijiexu@yahoo.com"
+
 # D1 留资数据库绑定（本项目的绑定由 wrangler.toml 管理，控制台里为只读）。
 # 数据库 yisha-leads 已创建并执行过 schema.sql；绑定变更 push 到 main 后自动重新部署生效。
 [[d1_databases]]
